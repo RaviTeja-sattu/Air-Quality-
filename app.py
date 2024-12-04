@@ -258,7 +258,7 @@ if st.session_state.page == "Clustering visualizations":
     # Adding padding between rows of columns using markdown
     st.markdown('<div style="padding-bottom: 20px;"></div>', unsafe_allow_html=True)
 
-    col3, col4 = st.columns([1.2, 0.8])
+    col3, col4 = st.columns([1, 1.2])
 
     with col3:
         st.subheader("Heatmap of NO2 levels")
