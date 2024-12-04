@@ -28,6 +28,9 @@ st.markdown(
         color: white;
         font-family: Arial, sans-serif;
     }
+    .column-gap {
+        padding-right: 15px;
+    }
 
     .navbar {
         position: sticky;
