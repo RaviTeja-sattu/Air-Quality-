@@ -30,7 +30,7 @@ st.markdown(
     }
 
     .streamlit-expanderHeader, .block-container {
-        padding-right: 20px;
+        padding-right: 10px;
     }
 
     .navbar {
