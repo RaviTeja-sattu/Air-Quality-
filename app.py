@@ -192,6 +192,42 @@ def create_no2_city_plot(data):
     )
     return fig
 
+def preprocess_lstm_data(data):
+    scaler = MinMaxScaler()
+    data_scaled = scaler.fit_transform(data[['NO2', 'SO2', 'CO']].dropna())
+    return data_scaled, scaler
+
+def prepare_lstm_data(data, time_steps=10):
+    x_data = [data[i-time_steps:i] for i in range(time_steps, len(data))]
+    y_data = [data[i, 0] for i in range(time_steps, len(data))]
+    return np.array(x_data), np.array(y_data)
+
+def get_lstm_predictions(data_sample, model):
+    predictions = []
+    current_input = data_sample[-1]
+    for _ in range(10):
+        prediction = model.predict(current_input[np.newaxis, ...])
+        predictions.append(prediction[0, 0])
+        current_input = np.roll(current_input, -1, axis=0)
+        current_input[-1, 0] = prediction
+    return predictions
+
+def plot_predictions(past_data, predictions, area_type):
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=list(range(1, len(past_data) + 1)),
+        y=past_data[:, 0],
+        mode='lines',
+        name=f"Past Data ({area_type})"
+    ))
+    fig.add_trace(go.Scatter(
+        x=list(range(len(past_data) + 1, len(past_data) + 11)),
+        y=predictions,
+        mode='lines+markers',
+        name=f"Predictions ({area_type})"
+    ))
+    return fig
+
 # Page Rendering
 if st.session_state.page == "Interactive Map":
     st.title("Interactive Air Quality Map")
