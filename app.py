@@ -66,6 +66,16 @@ st.markdown(
     .navbar button:focus {
         outline: none;
     }
+
+    /* Custom CSS for spacing between columns */
+    .row .col {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .col-gap {
+        margin-bottom: 20px;  /* Adds space between rows of columns */
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -172,44 +182,7 @@ def create_no2_city_plot(data):
     )
     return fig
 
-def preprocess_lstm_data(data):
-    scaler = MinMaxScaler()
-    data_scaled = scaler.fit_transform(data[['NO2', 'SO2', 'CO']].dropna())
-    return data_scaled, scaler
-
-def prepare_lstm_data(data, time_steps=10):
-    x_data = [data[i-time_steps:i] for i in range(time_steps, len(data))]
-    y_data = [data[i, 0] for i in range(time_steps, len(data))]
-    return np.array(x_data), np.array(y_data)
-
-def get_lstm_predictions(data_sample, model):
-    predictions = []
-    current_input = data_sample[-1]
-    for _ in range(10):
-        prediction = model.predict(current_input[np.newaxis, ...])
-        predictions.append(prediction[0, 0])
-        current_input = np.roll(current_input, -1, axis=0)
-        current_input[-1, 0] = prediction
-    return predictions
-
-def plot_predictions(past_data, predictions, area_type):
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(
-        x=list(range(1, len(past_data) + 1)),
-        y=past_data[:, 0],
-        mode='lines',
-        name=f"Past Data ({area_type})"
-    ))
-    fig.add_trace(go.Scatter(
-        x=list(range(len(past_data) + 1, len(past_data) + 11)),
-        y=predictions,
-        mode='lines+markers',
-        name=f"Predictions ({area_type})"
-    ))
-    return fig
-
 # Page Rendering
-
 if st.session_state.page == "Interactive Map":
     st.title("Interactive Air Quality Map")
     st.markdown(
@@ -238,18 +211,19 @@ if st.session_state.page == "Interactive Map":
     
     clustered_data = apply_kmeans_clustering(data)
     
-    # Create columns for maps
+    # Create columns for maps with gaps
     col1, col2 = st.columns(2)
-    
-    # Interactive map
+
     with col1:
         st.subheader("Interactive Map")
         folium_static(create_interactive_map(clustered_data))
     
-    # Clustered map
     with col2:
         st.subheader("Clustered Map")
         folium_static(create_clustered_map(clustered_data))
+
+    # Adding a gap between rows of columns
+    st.markdown('<div class="col-gap"></div>', unsafe_allow_html=True)
 
     col3, col4 = st.columns(2)
 
@@ -257,11 +231,10 @@ if st.session_state.page == "Interactive Map":
         st.subheader("Heatmap of NO2 levels")
         folium_static(create_heatmap(clustered_data))
     
-    # NO2 across cities plot
     with col4:
         st.subheader("NO2 Levels Across Cities")
         st.plotly_chart(create_no2_city_plot(clustered_data))
-
+        
 elif st.session_state.page == "Air Quality Forecasting":
     st.title("Air Quality Forecasting")
     uploaded_file = st.file_uploader("Upload CSV", type="csv")
