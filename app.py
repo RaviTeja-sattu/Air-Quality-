@@ -67,7 +67,12 @@ st.markdown(
     .navbar button:focus {
         outline: none;
     }
+    .folium-map {
+        width: 90% !important;
+        height: 400px !important;
+    }
     </style>
+    
     """,
     unsafe_allow_html=True
 )
