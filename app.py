@@ -80,7 +80,7 @@ st.markdown(
 
 # Page State Management
 if "page" not in st.session_state:
-    st.session_state.page = "Interactive Map"
+    st.session_state.page = "Clustering visualizations"
 
 # Create the columns with equal width for the buttons
 col1, col2 = st.columns([1, 1])
