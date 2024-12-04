@@ -40,8 +40,8 @@ st.markdown(
         padding: 15px 0;
         border-bottom: 3px solid #444;  /* A bit more prominent border */
     }
-    .map-container {
-        margin-right: 30px;  /* Adds space to the right of each map */
+    .col {
+        padding-right: 30px;  /* Adds space to the right of each map */
     }
 
     .navbar button {
