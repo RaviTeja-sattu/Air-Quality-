@@ -67,14 +67,24 @@ st.markdown(
         outline: none;
     }
 
-    /* Custom CSS for spacing between columns */
-    .row .col {
-        padding-right: 10px;
-        padding-left: 10px;
+    /* Custom CSS for adding padding */
+    .streamlit-expanderHeader, .block-container {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    .col-gap {
-        margin-bottom: 20px;  /* Adds space between rows of columns */
+    .stButton {
+        margin-top: 10px;
+    }
+
+    .column-gap {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .row .col {
+        padding-right: 20px;
+        padding-left: 20px;
     }
     </style>
     """,
@@ -211,8 +221,8 @@ if st.session_state.page == "Interactive Map":
     
     clustered_data = apply_kmeans_clustering(data)
     
-    # Create columns for maps with gaps
-    col1, col2 = st.columns(2)
+    # Create columns for maps with padding
+    col1, col2 = st.columns([1, 1])
 
     with col1:
         st.subheader("Interactive Map")
@@ -222,10 +232,10 @@ if st.session_state.page == "Interactive Map":
         st.subheader("Clustered Map")
         folium_static(create_clustered_map(clustered_data))
 
-    # Adding a gap between rows of columns
-    st.markdown('<div class="col-gap"></div>', unsafe_allow_html=True)
+    # Adding padding between rows of columns using markdown
+    st.markdown('<div style="padding-bottom: 20px;"></div>', unsafe_allow_html=True)
 
-    col3, col4 = st.columns(2)
+    col3, col4 = st.columns([1, 1])
 
     with col3:
         st.subheader("Heatmap of NO2 levels")
