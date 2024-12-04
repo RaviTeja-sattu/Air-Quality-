@@ -26,8 +26,18 @@ st.markdown(
         background-color: black;
         color: white;
         font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
     }
 
+    /* Add padding to the main content but keep the structure consistent */
+    .main-content {
+        padding: 20px;
+        max-width: 1200px;  /* Control the width of the content */
+        margin: 0 auto;  /* Center the content */
+    }
+
+    /* Navbar styles */
     .navbar {
         position: sticky;
         top: 0;
@@ -67,29 +77,43 @@ st.markdown(
         outline: none;
     }
 
-    /* Custom CSS for adding padding */
+    /* Layout structure */
     .streamlit-expanderHeader, .block-container {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 0;  /* No additional padding here */
     }
 
+    /* Control padding and layout for button containers */
     .stButton {
         margin-top: 10px;
     }
 
-    .column-gap {
-        padding-right: 15px;
-        padding-left: 15px;
+    /* Padding around columns */
+    .row .col {
+        padding: 0 15px;
     }
 
-    .row .col {
-        padding-right: 20px;
-        padding-left: 20px;
+    /* If you want to control margins around the forecasting page specifically */
+    .forecasting-page {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Ensure padding around the content */
+    .column-gap {
+        padding: 10px;
+    }
+
+    /* Ensure the layout does not stretch the content too wide */
+    .block-container {
+        max-width: 1200px;  /* Limit the max width of the content */
+        margin: 0 auto;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 # Page State Management
 if "page" not in st.session_state:
