@@ -40,6 +40,9 @@ st.markdown(
         padding: 15px 0;
         border-bottom: 3px solid #444;  /* A bit more prominent border */
     }
+    .map-container {
+        margin-right: 30px;  /* Adds space to the right of each map */
+    }
 
     .navbar button {
         background-color: #333;  /* Dark grey background */
@@ -117,7 +120,7 @@ def apply_kmeans_clustering(data):
     return data
 
 def create_interactive_map(data):
-    india_map = folium.Map(location=[20.5937, 78.9629], zoom_start=4)
+    india_map = folium.Map(location=[20.5937, 78.9629], zoom_start=5)
     marker_cluster = MarkerCluster().add_to(india_map)
     for _, row in data.iterrows():
         cluster_color = '#FF5733' if row['Cluster'] == 0 else '#33FF57'
@@ -133,7 +136,7 @@ def create_interactive_map(data):
     return india_map
 
 def create_clustered_map(data):
-    clustered_map = folium.Map(location=[20.5937, 78.9629], zoom_start=4)
+    clustered_map = folium.Map(location=[20.5937, 78.9629], zoom_start=5)
     cluster_colors = ['#FF0000', '#0000FF']
     for _, row in data.iterrows():
         cluster_color = cluster_colors[row['Cluster'] % len(cluster_colors)]
