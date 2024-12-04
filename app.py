@@ -67,31 +67,10 @@ st.markdown(
     .navbar button:focus {
         outline: none;
     }
-
-    /* Custom CSS for adding padding */
-    .streamlit-expanderHeader, .block-container {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .stButton {
-        margin-top: 10px;
-    }
-
-    .column-gap {
-        padding-right: 15px;
-        padding-left: 15px;
-    }
-
-    .row .col {
-        padding-right: 20px;
-        padding-left: 20px;
-    }
     </style>
     """,
     unsafe_allow_html=True
 )
-
 
 # Page State Management
 if "page" not in st.session_state:
