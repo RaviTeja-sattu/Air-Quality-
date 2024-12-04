@@ -28,10 +28,6 @@ st.markdown(
         color: white;
         font-family: Arial, sans-serif;
     }
-    .streamlit-expanderHeader, .block-container {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
 
     .stButton {
         margin-top: 10px;
