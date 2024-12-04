@@ -28,8 +28,23 @@ st.markdown(
         color: white;
         font-family: Arial, sans-serif;
     }
+    .streamlit-expanderHeader, .block-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .stButton {
+        margin-top: 10px;
+    }
+
     .column-gap {
         padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .row .col {
+        padding-right: 20px;
+        padding-left: 20px;
     }
 
     .navbar {
@@ -42,9 +57,6 @@ st.markdown(
         background-color: #333;  /* Dark grey */
         padding: 15px 0;
         border-bottom: 3px solid #444;  /* A bit more prominent border */
-    }
-    .col {
-        padding-right: 30px;  /* Adds space to the right of each map */
     }
 
     .navbar button {
