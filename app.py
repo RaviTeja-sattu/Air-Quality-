@@ -30,7 +30,6 @@ st.markdown(
     }
 
     .streamlit-expanderHeader, .block-container {
-        padding-left: 20px;
         padding-right: 20px;
     }
 
