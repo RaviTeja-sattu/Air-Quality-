@@ -216,7 +216,7 @@ def plot_predictions(past_data, predictions, area_type):
     return fig
 
 # Page Rendering
-if st.session_state.page == "Interactive Map":
+if st.session_state.page == "Clustering visualizations":
     st.title("Interactive Air Quality Map")
     st.markdown(
         """
