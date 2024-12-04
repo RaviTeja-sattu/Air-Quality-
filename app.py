@@ -19,6 +19,7 @@ model_urban = load_model('urban_city_lstm_model24.h5', custom_objects={"mse": Me
 model_rural = load_model('rural_city_lstm_model24.h5', custom_objects={"mse": MeanSquaredError()})
 
 # Navbar CSS
+# Navbar CSS
 st.markdown(
     """
     <style>
@@ -26,18 +27,8 @@ st.markdown(
         background-color: black;
         color: white;
         font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
     }
 
-    /* Add padding to the main content but keep the structure consistent */
-    .main-content {
-        padding: 20px;
-        max-width: 1200px;  /* Control the width of the content */
-        margin: 0 auto;  /* Center the content */
-    }
-
-    /* Navbar styles */
     .navbar {
         position: sticky;
         top: 0;
@@ -77,37 +68,24 @@ st.markdown(
         outline: none;
     }
 
-    /* Layout structure */
+    /* Custom CSS for adding padding */
     .streamlit-expanderHeader, .block-container {
-        padding: 0;  /* No additional padding here */
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    /* Control padding and layout for button containers */
     .stButton {
         margin-top: 10px;
     }
 
-    /* Padding around columns */
-    .row .col {
-        padding: 0 15px;
-    }
-
-    /* If you want to control margins around the forecasting page specifically */
-    .forecasting-page {
-        padding: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    /* Ensure padding around the content */
     .column-gap {
-        padding: 10px;
+        padding-right: 15px;
+        padding-left: 15px;
     }
 
-    /* Ensure the layout does not stretch the content too wide */
-    .block-container {
-        max-width: 1200px;  /* Limit the max width of the content */
-        margin: 0 auto;
+    .row .col {
+        padding-right: 20px;
+        padding-left: 20px;
     }
     </style>
     """,
