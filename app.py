@@ -68,7 +68,7 @@ st.markdown(
         outline: none;
     }
     .folium-map {
-        width: 90% !important;
+        width: 75% !important;
         height: 400px !important;
     }
     </style>
