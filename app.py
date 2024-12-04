@@ -88,7 +88,7 @@ with col2:
 
 # Functions for Clustering and Prediction
 def load_default_data():
-    return pd.read_csv('merged_data.csv')
+    return pd.read_csv('metrics1.csv')
 
 def load_uploaded_data(uploaded_file):
     return pd.read_csv(uploaded_file)
