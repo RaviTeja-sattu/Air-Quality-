@@ -29,18 +29,9 @@ st.markdown(
         font-family: Arial, sans-serif;
     }
 
-    .stButton {
-        margin-top: 10px;
-    }
-
-    .column-gap {
-        padding-right: 15px;
-        padding-left: 15px;
-    }
-
-    .row .col {
-        padding-right: 20px;
+    .streamlit-expanderHeader, .block-container {
         padding-left: 20px;
+        padding-right: 20px;
     }
 
     .navbar {
